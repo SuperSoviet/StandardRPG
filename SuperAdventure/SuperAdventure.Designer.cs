@@ -28,10 +28,9 @@
       this.label3 = new System.Windows.Forms.Label();
       this.label4 = new System.Windows.Forms.Label();
       this.lblGold = new System.Windows.Forms.Label();
-      this.lbHitPoints = new System.Windows.Forms.Label();
+      this.lblHitPoints = new System.Windows.Forms.Label();
       this.lblExperience = new System.Windows.Forms.Label();
       this.lblLevel = new System.Windows.Forms.Label();
-      this.btnTest = new System.Windows.Forms.Button();
       // 
       // label1
       // 
@@ -41,7 +40,6 @@
       this.label1.Size = new System.Drawing.Size(75, 20);
       this.label1.TabIndex = 0;
       this.label1.Text = "Hit Points:";
-      this.label1.Click += new System.EventHandler(this.label1_Click);
       // 
       // label2
       // 
@@ -69,7 +67,6 @@
       this.label4.Size = new System.Drawing.Size(46, 20);
       this.label4.TabIndex = 3;
       this.label4.Text = "Level:";
-      this.label4.Click += new System.EventHandler(this.label4_Click);
       // 
       // lblGold
       // 
@@ -78,15 +75,14 @@
       this.lblGold.Name = "lblGold";
       this.lblGold.Size = new System.Drawing.Size(0, 20);
       this.lblGold.TabIndex = 4;
-      this.lblGold.Click += new System.EventHandler(this.label5_Click);
       // 
-      // lbHitPoints
+      // lblHitPoints
       // 
-      this.lbHitPoints.AutoSize = true;
-      this.lbHitPoints.Location = new System.Drawing.Point(110, 19);
-      this.lbHitPoints.Name = "lbHitPoints";
-      this.lbHitPoints.Size = new System.Drawing.Size(0, 20);
-      this.lbHitPoints.TabIndex = 5;
+      this.lblHitPoints.AutoSize = true;
+      this.lblHitPoints.Location = new System.Drawing.Point(110, 19);
+      this.lblHitPoints.Name = "lblHitPoints";
+      this.lblHitPoints.Size = new System.Drawing.Size(0, 20);
+      this.lblHitPoints.TabIndex = 5;
       // 
       // lblExperience
       // 
@@ -104,25 +100,14 @@
       this.lblLevel.Size = new System.Drawing.Size(0, 20);
       this.lblLevel.TabIndex = 7;
       // 
-      // btnTest
-      // 
-      this.btnTest.Location = new System.Drawing.Point(83, 326);
-      this.btnTest.Name = "btnTest";
-      this.btnTest.Size = new System.Drawing.Size(94, 29);
-      this.btnTest.TabIndex = 8;
-      this.btnTest.Text = "test";
-      this.btnTest.UseVisualStyleBackColor = true;
-      this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-      // 
       // SuperAdventure
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(717, 643);
-      this.Controls.Add(this.btnTest);
       this.Controls.Add(this.lblLevel);
       this.Controls.Add(this.lblExperience);
-      this.Controls.Add(this.lbHitPoints);
+      this.Controls.Add(this.lblHitPoints);
       this.Controls.Add(this.lblGold);
       this.Controls.Add(this.label4);
       this.Controls.Add(this.label3);
@@ -140,10 +125,9 @@
     private System.Windows.Forms.Label label3;
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.Label lblGold;
-    private System.Windows.Forms.Label lbHitPoints;
+    private System.Windows.Forms.Label lblHitPoints;
     private System.Windows.Forms.Label lblExperience;
     private System.Windows.Forms.Label lblLevel;
-    private System.Windows.Forms.Button btnTest;
   }
 }
 

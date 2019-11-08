@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperAdventure", "SuperAdventure\SuperAdventure.csproj", "{B78E3683-F74B-4C5E-A451-1A4ADFABA989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{E196E4D1-BC4D-45D9-BC9E-FBB826753573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Engine", "Engine\Engine.csproj", "{E196E4D1-BC4D-45D9-BC9E-FBB826753573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperAdventureFx", "SuperAdventureFx\SuperAdventureFx.csproj", "{11FAE34F-4C93-4ADE-8223-01E946309493}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E196E4D1-BC4D-45D9-BC9E-FBB826753573}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E196E4D1-BC4D-45D9-BC9E-FBB826753573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E196E4D1-BC4D-45D9-BC9E-FBB826753573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FAE34F-4C93-4ADE-8223-01E946309493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FAE34F-4C93-4ADE-8223-01E946309493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FAE34F-4C93-4ADE-8223-01E946309493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FAE34F-4C93-4ADE-8223-01E946309493}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

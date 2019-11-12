@@ -33,7 +33,7 @@
       this.lblLevel = new System.Windows.Forms.Label();
       this.label5 = new System.Windows.Forms.Label();
       this.cboPotions = new System.Windows.Forms.ComboBox();
-      this.choWeapons = new System.Windows.Forms.ComboBox();
+      this.cboWeapons = new System.Windows.Forms.ComboBox();
       this.btnUseWeapon = new System.Windows.Forms.Button();
       this.btnUsePotion = new System.Windows.Forms.Button();
       this.btnNorth = new System.Windows.Forms.Button();
@@ -134,14 +134,14 @@
       this.cboPotions.Size = new System.Drawing.Size(151, 24);
       this.cboPotions.TabIndex = 9;
       // 
-      // choWeapons
+      // cboWeapons
       // 
-      this.choWeapons.FormattingEnabled = true;
-      this.choWeapons.Location = new System.Drawing.Point(369, 447);
-      this.choWeapons.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-      this.choWeapons.Name = "choWeapons";
-      this.choWeapons.Size = new System.Drawing.Size(151, 24);
-      this.choWeapons.TabIndex = 10;
+      this.cboWeapons.FormattingEnabled = true;
+      this.cboWeapons.Location = new System.Drawing.Point(369, 447);
+      this.cboWeapons.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+      this.cboWeapons.Name = "cboWeapons";
+      this.cboWeapons.Size = new System.Drawing.Size(151, 24);
+      this.cboWeapons.TabIndex = 10;
       // 
       // btnUseWeapon
       // 
@@ -282,7 +282,7 @@
       this.Controls.Add(this.btnNorth);
       this.Controls.Add(this.btnUsePotion);
       this.Controls.Add(this.btnUseWeapon);
-      this.Controls.Add(this.choWeapons);
+      this.Controls.Add(this.cboWeapons);
       this.Controls.Add(this.cboPotions);
       this.Controls.Add(this.label5);
       this.Controls.Add(this.lblLevel);
@@ -315,7 +315,7 @@
     private System.Windows.Forms.Label lblLevel;
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.ComboBox cboPotions;
-    private System.Windows.Forms.ComboBox choWeapons;
+    private System.Windows.Forms.ComboBox cboWeapons;
     private System.Windows.Forms.Button btnUseWeapon;
     private System.Windows.Forms.Button btnUsePotion;
     private System.Windows.Forms.Button btnNorth;

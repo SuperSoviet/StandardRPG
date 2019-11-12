@@ -150,6 +150,7 @@ namespace Engine {
 
       farmhouse.LocationToEast = townSquare;
       farmhouse.LocationToWest = farmersField;
+      farmersField.LocationToEast = farmhouse;
 
       alchemistHut.LocationToSouth = townSquare;
       alchemistHut.LocationToNorth = alchemistGarden;

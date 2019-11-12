@@ -46,9 +46,9 @@ namespace SuperAdventureFx {
     private void MoveTo(Location newLocation) {
       //Does the location have any required items
       if (!_player.HasRequiredItemToEnterThisLocation(newLocation)) {
-        rtbMessages.Text += "You must have a" +
+        rtbMessages.Text += "You must have a " +
           newLocation.ItemRequiredToEnter.Name +
-          "to enter this location" + Environment.NewLine;
+          " to enter this location" + Environment.NewLine;
         return;
       }
       // update the player's current location
@@ -95,14 +95,14 @@ namespace SuperAdventureFx {
               rtbMessages.Text += Environment.NewLine;
               rtbMessages.Text += "You complete the" +
                 newLocation.QuestAvaiblableHere.Name +
-                "quest." + Environment.NewLine;
+                " quest." + Environment.NewLine;
               // remove quest items from inventory 
               _player.RemoveQuestCompletionItems(newLocation.QuestAvaiblableHere);
               // give quest reward
-              rtbMessages.Text += "You receive:" + Environment.NewLine;
+              rtbMessages.Text += "You receive: " + Environment.NewLine;
               rtbMessages.Text +=
                 newLocation.QuestAvaiblableHere.RewardExperiencePoints.ToString() +
-                "experience points" + Environment.NewLine;
+                " experience points" + Environment.NewLine;
               rtbMessages.Text +=
                 newLocation.QuestAvaiblableHere.RewardGold.ToString() +
                 "gold" + Environment.NewLine;
@@ -133,9 +133,9 @@ namespace SuperAdventureFx {
           // the player does not already have the quest 
 
           // display message
-          rtbMessages.Text += "You receive the" +
+          rtbMessages.Text += "You receive the " +
             newLocation.QuestAvaiblableHere.Name +
-            "quest." + Environment.NewLine;
+            " quest." + Environment.NewLine;
           rtbMessages.Text += "To complete it, Return with : " +
             Environment.NewLine;
           foreach (QuestCompletionItem qci in
@@ -157,7 +157,7 @@ namespace SuperAdventureFx {
       // does the location have a monster?
 
       if (newLocation.MonsterLivingHere != null) {
-        rtbMessages.Text += "You see a" + newLocation.MonsterLivingHere.Name +
+        rtbMessages.Text += "You see a " + newLocation.MonsterLivingHere.Name +
           Environment.NewLine;
         // make a new monster, using the values from the standard monster in world.cs monster list
         Monster stadardMonster = World.MonsterByID(

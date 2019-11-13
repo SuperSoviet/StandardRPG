@@ -30,14 +30,10 @@ namespace SuperAdventureFx
                 _player = Player.CreateDefaultPlayer();
             }
 
-            lblHitPoints.DataBindings.Add(
-                "Text", _player, "CurrentHitPoints");
-            lblGold.DataBindings.Add(
-                "Text", _player, "Gold");
-            lblExperience.DataBindings.Add(
-                "Text", _player, "ExperiencePoints");
-            lblLevel.DataBindings.Add(
-                "Text", _player, "Level");
+            lblHitPoints.DataBindings.Add("Text", _player, "CurrentHitPoints");
+            lblGold.DataBindings.Add("Text", _player, "Gold");
+            lblExperience.DataBindings.Add("Text", _player, "ExperiencePoints");
+            lblLevel.DataBindings.Add("Text", _player, "Level");
 
             dgvInventory.RowHeadersVisible = false;
             dgvInventory.AutoGenerateColumns = false;
@@ -90,8 +86,7 @@ namespace SuperAdventureFx
             //Does the location have any required items
             if (!_player.HasRequiredItemToEnterThisLocation(newLocation))
             {
-                rtbMessages.Text += "You must have a " +
-                                    newLocation.ItemRequiredToEnter.Name +
+                rtbMessages.Text += "You must have a " + newLocation.ItemRequiredToEnter.Name +
                                     " to enter this location" + Environment.NewLine;
                 ScrollToBottemOfMessages();
                 return;
@@ -140,22 +135,17 @@ namespace SuperAdventureFx
                         {
                             // display message
                             rtbMessages.Text += Environment.NewLine;
-                            rtbMessages.Text += "You complete the" +
-                                                newLocation.QuestAvaiblableHere.Name +
-                                                " quest." + Environment.NewLine;
+                            rtbMessages.Text += "You complete the" + newLocation.QuestAvaiblableHere.Name + " quest." +
+                                                Environment.NewLine;
                             // remove quest items from inventory 
                             _player.RemoveQuestCompletionItems(newLocation.QuestAvaiblableHere);
                             // give quest reward
                             rtbMessages.Text += "You receive: " + Environment.NewLine;
-                            rtbMessages.Text +=
-                                newLocation.QuestAvaiblableHere.RewardExperiencePoints.ToString() +
-                                " experience points" + Environment.NewLine;
-                            rtbMessages.Text +=
-                                newLocation.QuestAvaiblableHere.RewardGold.ToString() +
-                                "gold" + Environment.NewLine;
-                            rtbMessages.Text +=
-                                newLocation.QuestAvaiblableHere.RewardItem.Name +
-                                Environment.NewLine;
+                            rtbMessages.Text += newLocation.QuestAvaiblableHere.RewardExperiencePoints.ToString() +
+                                                " experience points" + Environment.NewLine;
+                            rtbMessages.Text += newLocation.QuestAvaiblableHere.RewardGold.ToString() + "gold" +
+                                                Environment.NewLine;
+                            rtbMessages.Text += newLocation.QuestAvaiblableHere.RewardItem.Name + Environment.NewLine;
                             rtbMessages.Text += Environment.NewLine;
                             ScrollToBottemOfMessages();
                             _player.AddExperiencePoints(newLocation.QuestAvaiblableHere.RewardExperiencePoints);
@@ -183,23 +173,19 @@ namespace SuperAdventureFx
                     // the player does not already have the quest 
 
                     // display message
-                    rtbMessages.Text += "You receive the " +
-                                        newLocation.QuestAvaiblableHere.Name +
-                                        " quest." + Environment.NewLine;
-                    rtbMessages.Text += "To complete it, Return with : " +
+                    rtbMessages.Text += "You receive the " + newLocation.QuestAvaiblableHere.Name + " quest." +
                                         Environment.NewLine;
-                    foreach (QuestCompletionItem qci in
-                        newLocation.QuestAvaiblableHere.QuestCompletionItems)
+                    rtbMessages.Text += "To complete it, Return with : " + Environment.NewLine;
+                    foreach (QuestCompletionItem qci in newLocation.QuestAvaiblableHere.QuestCompletionItems)
                     {
                         if (qci.Quantity == 1)
                         {
-                            rtbMessages.Text += qci.Quantity.ToString() + " " +
-                                                qci.Details.Name + Environment.NewLine;
+                            rtbMessages.Text += qci.Quantity.ToString() + " " + qci.Details.Name + Environment.NewLine;
                         }
                         else
                         {
-                            rtbMessages.Text += qci.Quantity.ToString() + " " +
-                                                qci.Details.NamePlural + Environment.NewLine;
+                            rtbMessages.Text += qci.Quantity.ToString() + " " + qci.Details.NamePlural +
+                                                Environment.NewLine;
                         }
 
                         ScrollToBottemOfMessages();
@@ -215,8 +201,7 @@ namespace SuperAdventureFx
 
             if (newLocation.MonsterLivingHere != null)
             {
-                rtbMessages.Text += "You see a " + newLocation.MonsterLivingHere.Name +
-                                    Environment.NewLine;
+                rtbMessages.Text += "You see a " + newLocation.MonsterLivingHere.Name + Environment.NewLine;
                 ScrollToBottemOfMessages();
                 // make a new monster, using the values from the standard monster in world.cs monster list
                 Monster stadardMonster = World.MonsterByID(
@@ -299,11 +284,9 @@ namespace SuperAdventureFx
             }
             else
             {
-                cboWeapons.SelectedIndexChanged -=
-                    cboWeapons_SelectedIndexChanged;
+                cboWeapons.SelectedIndexChanged -= cboWeapons_SelectedIndexChanged;
                 cboWeapons.DataSource = weapons;
-                cboWeapons.SelectedIndexChanged +=
-                    cboWeapons_SelectedIndexChanged;
+                cboWeapons.SelectedIndexChanged += cboWeapons_SelectedIndexChanged;
                 cboWeapons.DisplayMember = "Name";
                 cboWeapons.ValueMember = "ID";
                 if (_player.CurrentWeapon != null)
@@ -328,8 +311,7 @@ namespace SuperAdventureFx
                 {
                     if (inventoryItem.Quantity > 0)
                     {
-                        healingPotions.Add(
-                            (HealingPotion) inventoryItem.Details);
+                        healingPotions.Add((HealingPotion) inventoryItem.Details);
                     }
                 }
             }
@@ -337,7 +319,6 @@ namespace SuperAdventureFx
             if (healingPotions.Count == 0)
             {
                 // The player doesn't have any potions, so hide the potion combobox and use button
-
                 cboPotions.Visible = false;
                 btnUsePotion.Visible = false;
             }
@@ -356,33 +337,31 @@ namespace SuperAdventureFx
             Weapon currentWeapon = (Weapon) cboWeapons.SelectedItem;
 
             // Determine the amount of damage to do to the monster
-            int damageToMonster = RandomNumberGenerator.NumberBetween(
-                currentWeapon.MinimumDamage, currentWeapon.MaximumDamage);
+            int damageToMonster =
+                RandomNumberGenerator.NumberBetween(currentWeapon.MinimumDamage, currentWeapon.MaximumDamage);
 
             // Apply the damage to the monster's CurrentHitPoints
             _currentMonster.CurrentHitPoints -= damageToMonster;
 
             // Display message
-            rtbMessages.Text += "You hit the " + _currentMonster.Name + " for " +
-                                damageToMonster.ToString() + " points." + Environment.NewLine;
+            rtbMessages.Text += "You hit the " + _currentMonster.Name + " for " + damageToMonster.ToString() +
+                                " points." + Environment.NewLine;
             ScrollToBottemOfMessages();
             // Check if the monster is dead
             if (_currentMonster.CurrentHitPoints <= 0)
             {
                 // Monster is dead
                 rtbMessages.Text += Environment.NewLine;
-                rtbMessages.Text += "You defeated the " + _currentMonster.Name +
-                                    Environment.NewLine;
+                rtbMessages.Text += "You defeated the " + _currentMonster.Name + Environment.NewLine;
 
                 // Give player experience points for killing the monster
                 _player.AddExperiencePoints(_currentMonster.RewardExperiencePoints);
-                rtbMessages.Text += "You receive " +
-                                    _currentMonster.RewardExperiencePoints.ToString() +
+                rtbMessages.Text += "You receive " + _currentMonster.RewardExperiencePoints.ToString() +
                                     " experience points" + Environment.NewLine;
                 // Give player gold for killing the monster
                 _player.Gold += _currentMonster.RewardGold;
-                rtbMessages.Text += "You receive " +
-                                    _currentMonster.RewardGold.ToString() + " gold" + Environment.NewLine;
+                rtbMessages.Text += "You receive " + _currentMonster.RewardGold.ToString() + " gold" +
+                                    Environment.NewLine;
                 ScrollToBottemOfMessages();
                 // Get random loot items from the monster
                 List<InventoryItem> lootedItems = new List<InventoryItem>();
@@ -416,14 +395,12 @@ namespace SuperAdventureFx
 
                     if (inventoryItem.Quantity == 1)
                     {
-                        rtbMessages.Text += "You loot " +
-                                            inventoryItem.Quantity.ToString() + " " +
+                        rtbMessages.Text += "You loot " + inventoryItem.Quantity.ToString() + " " +
                                             inventoryItem.Details.Name + Environment.NewLine;
                     }
                     else
                     {
-                        rtbMessages.Text += "You loot " +
-                                            inventoryItem.Quantity.ToString() + " " +
+                        rtbMessages.Text += "You loot " + inventoryItem.Quantity.ToString() + " " +
                                             inventoryItem.Details.NamePlural + Environment.NewLine;
                     }
 
@@ -431,8 +408,6 @@ namespace SuperAdventureFx
                 }
 
                 // Refresh player information and inventory controls
-
-
                 UpdateWeaponListInUI();
                 UpdatePotionListInUI();
 
@@ -440,20 +415,17 @@ namespace SuperAdventureFx
                 rtbMessages.Text += Environment.NewLine;
                 ScrollToBottemOfMessages();
                 // Move player to current location (to heal player and create a new monster to fight)
-
                 MoveTo(_player.CurrentLocation);
             }
             else
             {
                 // Monster is still alive
-
                 // Determine the amount of damage the monster does to the player
-                int damageToPlayer =
-                    RandomNumberGenerator.NumberBetween(0, _currentMonster.MaximumDamage);
+                int damageToPlayer = RandomNumberGenerator.NumberBetween(0, _currentMonster.MaximumDamage);
 
                 // Display message
-                rtbMessages.Text += "The " + _currentMonster.Name + " did " +
-                                    damageToPlayer.ToString() + " points of damage." + Environment.NewLine;
+                rtbMessages.Text += "The " + _currentMonster.Name + " did " + damageToPlayer.ToString() +
+                                    " points of damage." + Environment.NewLine;
                 ScrollToBottemOfMessages();
                 // Subtract damage from player
                 _player.CurrentHitPoints -= damageToPlayer;
@@ -464,8 +436,7 @@ namespace SuperAdventureFx
                 if (_player.CurrentHitPoints <= 0)
                 {
                     // Display message
-                    rtbMessages.Text += "The " + _currentMonster.Name + " killed you." +
-                                        Environment.NewLine;
+                    rtbMessages.Text += "The " + _currentMonster.Name + " killed you." + Environment.NewLine;
                     ScrollToBottemOfMessages();
                     // Move player to "Home"
                     MoveTo(World.LocationByID(World.LOCATION_ID_HOME));
@@ -504,12 +475,11 @@ namespace SuperAdventureFx
             // Monster gets their turn to attack
 
             // Determine the amount of damage the monster does to the player
-            int damageToPlayer =
-                RandomNumberGenerator.NumberBetween(0, _currentMonster.MaximumDamage);
+            int damageToPlayer = RandomNumberGenerator.NumberBetween(0, _currentMonster.MaximumDamage);
 
             // Display message
-            rtbMessages.Text += "The " + _currentMonster.Name + " did " +
-                                damageToPlayer.ToString() + " points of damage." + Environment.NewLine;
+            rtbMessages.Text += "The " + _currentMonster.Name + " did " + damageToPlayer.ToString() +
+                                " points of damage." + Environment.NewLine;
             ScrollToBottemOfMessages();
             // Subtract damage from player
             _player.CurrentHitPoints -= damageToPlayer;
@@ -517,8 +487,7 @@ namespace SuperAdventureFx
             if (_player.CurrentHitPoints <= 0)
             {
                 // Display message
-                rtbMessages.Text += "The " + _currentMonster.Name + " killed you." +
-                                    Environment.NewLine;
+                rtbMessages.Text += "The " + _currentMonster.Name + " killed you." + Environment.NewLine;
                 ScrollToBottemOfMessages();
                 // Move player to "Home"
                 MoveTo(World.LocationByID(World.LOCATION_ID_HOME));
@@ -532,7 +501,6 @@ namespace SuperAdventureFx
 
         private const string PLAYER_DATA_FILE_NAME = "PlayerData.xml";
 
-
         private void ScrollToBottemOfMessages()
         {
             rtbMessages.SelectionStart = rtbMessages.Text.Length;
@@ -541,8 +509,7 @@ namespace SuperAdventureFx
 
         private void SuperAdventure_FormClosing(object sender, FormClosingEventArgs e)
         {
-            File.WriteAllText(
-                PLAYER_DATA_FILE_NAME, _player.ToXmlString());
+            File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SuperAdventureFx {
   public partial class SuperAdventure : Form {
@@ -16,14 +17,16 @@ namespace SuperAdventureFx {
 
     public SuperAdventure() {
       InitializeComponent();
-
-      _player = new Player(10, 10, 20, 0);
-      MoveTo(World.LocationByID(World.LOCATION_ID_HOME));
-      _player.Inventory.Add(new InventoryItem
-        (World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
+      if (File.Exists(PLAYER_DATA_FILE_NAME)) {
+        _player = Player.CreatePlayerFromXmlString(
+          File.ReadAllText(PLAYER_DATA_FILE_NAME));
+      } else {
+        _player = Player.CreateDefaultPlayer();
+      }
+      MoveTo(_player.CurrentLocation);
       UpdatePlayerStats();
-      
     }
+
     private void UpdatePlayerStats() {
       lblHitPoints.Text = _player.CurrentHitPoints.ToString();
       lblGold.Text = _player.Gold.ToString();
@@ -31,18 +34,19 @@ namespace SuperAdventureFx {
       lblLevel.Text = _player.Level.ToString();
 
     }
-    private void btnNorth_Click(object sender, EventArgs e) {
 
+    private void btnNorth_Click(object sender, EventArgs e) {
       MoveTo(_player.CurrentLocation.LocationToNorth);
     }
-
 
     private void btnEast_Click(object sender, EventArgs e) {
       MoveTo(_player.CurrentLocation.LocationToEast);
     }
+
     private void btnSouth_Click(object sender, EventArgs e) {
       MoveTo(_player.CurrentLocation.LocationToSouth);
     }
+
     private void btnWest_Click(object sender, EventArgs e) {
       MoveTo(_player.CurrentLocation.LocationToWest);
     }
@@ -80,10 +84,8 @@ namespace SuperAdventureFx {
 
       if (newLocation.QuestAvaiblableHere != null) {
         //see if the player has the quest and if they've completed it
-        bool playerAlreadyHasQuest =
-                  _player.HasThisQuest(newLocation.QuestAvaiblableHere);
-        bool playerAlreadyCompletedQuest =
-          _player.CompletedThisQuest(newLocation.QuestAvaiblableHere);
+        bool playerAlreadyHasQuest = _player.HasThisQuest(newLocation.QuestAvaiblableHere);
+        bool playerAlreadyCompletedQuest = _player.CompletedThisQuest(newLocation.QuestAvaiblableHere);
         // see if the player already has the quest
         if (playerAlreadyHasQuest) {
           // if the player has not completed the quest yet
@@ -169,7 +171,7 @@ namespace SuperAdventureFx {
         // make a new monster, using the values from the standard monster in world.cs monster list
         Monster stadardMonster = World.MonsterByID(
           newLocation.MonsterLivingHere.ID);
-        
+
         _currentMonster = new Monster(stadardMonster.ID, stadardMonster.Name,
           stadardMonster.MaximumDamage, stadardMonster.RewardExperiencePoints,
           stadardMonster.RewardGold, stadardMonster.CurrentHitPoints,
@@ -443,10 +445,22 @@ namespace SuperAdventureFx {
       lblHitPoints.Text = _player.CurrentHitPoints.ToString();
       UpdateInventoryListInUI();
       UpdatePotionListInUI();
+
+
     }
+
+    private const string PLAYER_DATA_FILE_NAME = "PlayerData.xml";
+
+
+
     private void ScrollToBottemOfMessages() {
       rtbMessages.SelectionStart = rtbMessages.Text.Length;
       rtbMessages.ScrollToCaret();
+    }
+
+    private void SuperAdventure_FormClosing(object sender, FormClosingEventArgs e) {
+      File.WriteAllText(
+        PLAYER_DATA_FILE_NAME, _player.ToXmlString());
     }
   }
 

@@ -22,19 +22,19 @@ namespace SuperAdventureFx {
       } else {
         _player = Player.CreateDefaultPlayer();
       }
+      lblHitPoints.DataBindings.Add(
+        "Text", _player, "CurrentHitPoints");
+      lblGold.DataBindings.Add(
+        "Text", _player, "Gold");
+      lblExperience.DataBindings.Add(
+        "Text", _player, "ExperiencePoints");
+      lblLevel.DataBindings.Add(
+        "Text", _player, "Level");
+
       MoveTo(_player.CurrentLocation);
-      UpdatePlayerStats();
     }
     private void cboWeapons_SelectedIndexChanged(object sender, EventArgs e) {
       _player.CurrentWeapon = (Weapon)cboWeapons.SelectedItem;
-    }
-
-    private void UpdatePlayerStats() {
-      lblHitPoints.Text = _player.CurrentHitPoints.ToString();
-      lblGold.Text = _player.Gold.ToString();
-      lblExperience.Text = _player.ExperiencePoints.ToString();
-      lblLevel.Text = _player.Level.ToString();
-
     }
 
     private void btnNorth_Click(object sender, EventArgs e) {
@@ -202,7 +202,7 @@ namespace SuperAdventureFx {
         UpdateWeaponListInUI();
         // refreshes players potions combobox
         UpdatePotionListInUI();
-        UpdatePlayerStats();
+        
 
       }
     }
@@ -363,7 +363,7 @@ namespace SuperAdventureFx {
         }
 
         // Refresh player information and inventory controls
-        UpdatePlayerStats();
+       
 
         UpdateInventoryListInUI();
         UpdateWeaponListInUI();

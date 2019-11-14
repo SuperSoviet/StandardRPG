@@ -52,6 +52,22 @@ namespace SuperAdventureFx
                 HeaderText = "Quantity",
                 DataPropertyName = "Quantity"
             });
+            dgvQuests.RowHeadersVisible = false;
+            dgvQuests.AutoGenerateColumns = false;
+
+            dgvQuests.DataSource = _player.Quests;
+
+            dgvQuests.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Name",
+                Width = 197,
+                DataPropertyName = "name"
+            });
+            dgvQuests.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Done?",
+                DataPropertyName = "IsCompleted"
+            });
 
             MoveTo(_player.CurrentLocation);
         }
@@ -230,35 +246,10 @@ namespace SuperAdventureFx
                 cboPotions.Visible = false;
                 btnUseWeapon.Visible = false;
                 btnUsePotion.Visible = false;
-                // refresh player's invetorylist
-                ;
-                // refreshes players quest list
-                UpdateQuestListInUI();
                 // refreshes players weapons list
                 UpdateWeaponListInUI();
                 // refreshes players potions combobox
                 UpdatePotionListInUI();
-            }
-        }
-
-        private void UpdateQuestListInUI()
-        {
-            dgvQuests.RowHeadersVisible = false;
-
-            dgvQuests.ColumnCount = 2;
-            dgvQuests.Columns[0].Name = "Name";
-            dgvQuests.Columns[0].Width = 197;
-            dgvQuests.Columns[1].Name = "Done?";
-
-            dgvQuests.Rows.Clear();
-
-            foreach (PlayerQuest playerQuest in _player.Quests)
-            {
-                dgvQuests.Rows.Add(new[]
-                {
-                    playerQuest.Details.Name,
-                    playerQuest.IsCompleted.ToString()
-                });
             }
         }
 

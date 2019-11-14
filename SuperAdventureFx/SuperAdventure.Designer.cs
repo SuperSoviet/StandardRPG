@@ -1,4 +1,8 @@
-﻿namespace SuperAdventureFx {
+﻿using System;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms.VisualStyles;
+
+namespace SuperAdventureFx {
   partial class SuperAdventure {
     /// <summary>
     ///  Required designer variable.
@@ -49,6 +53,7 @@
       ((System.ComponentModel.ISupportInitialize) (this.dgvQuests)).BeginInit();
       this.SuspendLayout();
       this.label1.AutoSize = true;
+      this.btnTrade = new System.Windows.Forms.Button();
       this.label1.Location = new System.Drawing.Point(18, 20);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(75, 20);
@@ -243,10 +248,19 @@
       ((System.ComponentModel.ISupportInitialize) (this.dgvQuests)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
+      this.btnTrade.Location = new System.Drawing.Point(493, 620);
+      this.btnTrade.Name = "btnTrade";
+      this.btnTrade.Size = new System.Drawing.Size(75, 23);
+      this.btnTrade.TabIndex = 21;
+      this.btnTrade.Text = "Trade";
+      this.btnTrade.UseVisualStyleBackColor = true;
+      this.btnTrade.Click +=
+        new System.EventHandler(this.btnTrade_Click);
+      this.Controls.Add(this.btnTrade);
     }
 
     #endregion
-
+   
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label3;
@@ -268,6 +282,9 @@
     private System.Windows.Forms.RichTextBox rtbLocation;
     private System.Windows.Forms.DataGridView dgvInventory;
     private System.Windows.Forms.DataGridView dgvQuests;
+    private System.Windows.Forms.Button btnTrade;
+
+
   }
 }
 

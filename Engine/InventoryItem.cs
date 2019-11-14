@@ -13,6 +13,7 @@ namespace Engine {
           this, new PropertyChangedEventArgs(name));
       }
     }
+    
     private Item _details;
     private int _quantity;
     public Item Details {

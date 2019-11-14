@@ -35,7 +35,7 @@
       // 
       // lblMyInventory
       // 
-      this.lblMyInventory.Location = new System.Drawing.Point(99, 13);
+      this.lblMyInventory.Location = new System.Drawing.Point(13, 12);
       this.lblMyInventory.Name = "lblMyInventory";
       this.lblMyInventory.Size = new System.Drawing.Size(108, 32);
       this.lblMyInventory.TabIndex = 0;
@@ -44,7 +44,7 @@
       // 
       // lblVendorInventory
       // 
-      this.lblVendorInventory.Location = new System.Drawing.Point(349, 13);
+      this.lblVendorInventory.Location = new System.Drawing.Point(360, 12);
       this.lblVendorInventory.Name = "lblVendorInventory";
       this.lblVendorInventory.Size = new System.Drawing.Size(144, 36);
       this.lblVendorInventory.TabIndex = 1;
@@ -52,19 +52,23 @@
       // 
       // dgvMyItems
       // 
+      this.dgvMyItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.dgvMyItems.ColumnHeadersHeightSizeMode =
         System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgvMyItems.Location = new System.Drawing.Point(13, 43);
+      this.dgvMyItems.Location = new System.Drawing.Point(13, 39);
+      this.dgvMyItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.dgvMyItems.Name = "dgvMyItems";
       this.dgvMyItems.RowTemplate.Height = 24;
-      this.dgvMyItems.Size = new System.Drawing.Size(240, 216);
+      this.dgvMyItems.Size = new System.Drawing.Size(341, 216);
       this.dgvMyItems.TabIndex = 2;
       // 
       // dgvVendorItems
       // 
+      this.dgvVendorItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
       this.dgvVendorItems.ColumnHeadersHeightSizeMode =
         System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-      this.dgvVendorItems.Location = new System.Drawing.Point(276, 43);
+      this.dgvVendorItems.Location = new System.Drawing.Point(360, 39);
+      this.dgvVendorItems.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.dgvVendorItems.Name = "dgvVendorItems";
       this.dgvVendorItems.RowTemplate.Height = 24;
       this.dgvVendorItems.Size = new System.Drawing.Size(240, 216);
@@ -72,7 +76,8 @@
       // 
       // btnClose
       // 
-      this.btnClose.Location = new System.Drawing.Point(441, 267);
+      this.btnClose.Location = new System.Drawing.Point(525, 259);
+      this.btnClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
       this.btnClose.Name = "btnClose";
       this.btnClose.Size = new System.Drawing.Size(75, 32);
       this.btnClose.TabIndex = 4;
@@ -84,14 +89,14 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(526, 302);
+      this.ClientSize = new System.Drawing.Size(612, 302);
       this.Controls.Add(this.btnClose);
       this.Controls.Add(this.dgvVendorItems);
       this.Controls.Add(this.dgvMyItems);
       this.Controls.Add(this.lblVendorInventory);
       this.Controls.Add(this.lblMyInventory);
       this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-      this.MaximumSize = new System.Drawing.Size(544, 349);
+      this.MaximumSize = new System.Drawing.Size(630, 349);
       this.Name = "TradingScreen";
       this.Text = "Trade";
       ((System.ComponentModel.ISupportInitialize) (this.dgvMyItems)).EndInit();

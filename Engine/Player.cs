@@ -256,6 +256,8 @@ namespace Engine {
       CheckQuests(newLocation);
 
       SpawnMonster(newLocation);
+
+
     }
 
     private void UpdatePlayer(Location newLocation) {
@@ -493,9 +495,6 @@ namespace Engine {
     public void MoveWest() {
       if (CurrentLocation.LocationToWest != null) {
         MoveTo(CurrentLocation.LocationToWest);
-      }
-      public void NewLocation() {
-
       }
     }
 

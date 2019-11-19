@@ -126,7 +126,7 @@ namespace Engine
             Location alchemistHut = new Location(LOCATION_ID_ALCHEMIST_HUT,
                 "Alchemist's hut",
                 "There are many strange plants on the shelve.");
-            alchemistHut.QuestAvaiblableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
+            alchemistHut.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
 
             Location alchemistGarden = new Location(LOCATION_ID_ALCHEMIST_GARDEN,
                 "Alchemist's garden",
@@ -136,7 +136,7 @@ namespace Engine
             Location farmhouse = new Location(LOCATION_ID_FARMHOUSE,
                 "Farmhouse",
                 "There is a small farmhouse, with a farmer infront");
-            farmhouse.QuestAvaiblableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
+            farmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
 
             Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's field",
                 "You see rows of vegtables growing here.");

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Engine;
 
 namespace SuperAdventureConsole
@@ -201,7 +202,7 @@ namespace SuperAdventureConsole
                     }
                 }
             }
-            else if (input.StartsWith("equip "))
+            else if (input.StartsWith("equip"))
             {
                 string inputWeaponName = input.Substring(6).Trim();
                 if (string.IsNullOrEmpty(inputWeaponName))
@@ -244,7 +245,7 @@ namespace SuperAdventureConsole
                     }
                 }
             }
-            else if (input == "trade ")
+            else if (input == "trade")
             {
                 if (_player.CurrentLocation.VendorWorkingHere == null)
                 {
@@ -341,12 +342,70 @@ namespace SuperAdventureConsole
                     {
                         Console.WriteLine("You must enter the name of the item to sell");
                     }
-                    
+
+                    else
+                    {
+                        //get the IventoryItem from the player's inventory
+                        InventoryItem itemToSell = _player.Inventory.SingleOrDefault(x =>
+                            x.Details.Name.ToLower() == itemName &&
+                            x.Quantity > 0 &&
+                            x.Price != World.UNSELLABLE_ITEM_PRICE);
+                        //check if the player has the item entered
+                        if (itemToSell == null)
+                        {
+                            Console.WriteLine("The player cannot sell any{0}", itemName);
+                        }
+                        else
+                        {
+                            //sell the item
+                            _player.RemoveItemFromInventory(itemToSell.Details);
+                            _player.Gold += itemToSell.Price;
+
+                            Console.WriteLine("You receive {0} gold for your {1}", itemToSell.Price,
+                                itemToSell.Details.Name);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("I do not understand");
+                Console.WriteLine("Type 'help' to see the list of available commands");
+            }
+
+            //write a blank like to keep the ui a little clean
+            Console.WriteLine(" ");
+        }
+
+        private static void DisplayCurrentLocation()
+        {
+            Console.WriteLine("You are at {0}", _player.CurrentLocation.Name);
+            if (_player.CurrentLocation.Description != " ")
+            {
+                Console.WriteLine(_player.CurrentLocation.Description);
+            }
+        }
+
+        private static void LoadGameData()
+        {
+            _player = PlayerDataMapper.CreateFromDataBase();
+            if (_player == null)
+            {
+                if (File.Exists(PLAYER_DATA_FILE_NAME))
+                {
+                    _player = Player.CreatePlayerFromXmlString(File.ReadAllText(PLAYER_DATA_FILE_NAME));
+                }
+                else
+                {
+                    _player = Player.CreateDefaultPlayer();
                 }
             }
         }
-    }
-}
 
-}
+        private static void SaveGameData()
+        {
+            File.WriteAllText(PLAYER_DATA_FILE_NAME, _player.ToXmlString());
+            PlayerDataMapper.SaveToDatabase(_player);
+        }
+    }
 }
